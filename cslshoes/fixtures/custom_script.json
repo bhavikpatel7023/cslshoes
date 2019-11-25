@@ -1,0 +1,13 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Custom Script",
+  "dt": "Sales Invoice",
+  "modified": "2019-11-24 15:06:32.709015",
+  "name": "Sales Invoice-Client",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "script": "frappe.ui.form.on('Sales Invoice',  'validate',  function(frm) {\r\n    var msg = '';\r\n    frm.doc.items.forEach(item=>{\r\n        if(item.actual_qty < item.qty ){\r\n            msg += item.item_name +\", \";\r\n        }\r\n    });\r\n    if (msg !== ''){\r\n        frappe.msgprint(\"Following item is not availble in stock: \" + msg);\r\n        validated=false;\r\n    }\r\n});\r\n\r\nfrappe.ui.form.on('Sales Invoice',  'customer',  function(frm) {\r\n    frappe.call({\r\n        method: \"frappe.client.get\",\r\n        args: {\r\n            doctype: \"Customer\",\r\n            name: frm.doc.customer,\r\n        },\r\n        callback(r) {\r\n            if(r.message) {\r\n                frm.doc.auto_email_invoice = r.message.auto_email_invoice\r\n               \r\n            }\r\n        }\r\n    });\r\n});\r\n\r\n// make a field read-only after saving \r\nfrappe.ui.form.on('Sales Invoice',  {\r\n    refresh: function(frm) {\r\n        frm.doc.update_stock =1;\r\n    } \r\n});\r\n\r\n\r\nfrappe.ui.form.on('Sales Invoice Item', {\r\n\titem_code : function(frm,cdt,cdn) {\r\n\t\tlocals[cdt][cdn].Warehouse = 'On Shelf - CSL';\r\n\t}\r\n});"
+ }
+]

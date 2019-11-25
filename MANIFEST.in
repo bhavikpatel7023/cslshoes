@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include cslshoes *.css
+recursive-include cslshoes *.csv
+recursive-include cslshoes *.html
+recursive-include cslshoes *.ico
+recursive-include cslshoes *.js
+recursive-include cslshoes *.json
+recursive-include cslshoes *.md
+recursive-include cslshoes *.png
+recursive-include cslshoes *.py
+recursive-include cslshoes *.svg
+recursive-include cslshoes *.txt
+recursive-exclude cslshoes *.pyc
