@@ -108,12 +108,12 @@ class AccountsReceivableSummary(ReceivablePayableReport):
 
 		self.add_column(_('Advance Amount'), fieldname='advance')
 		self.add_column(_('Invoiced Amount'), fieldname='invoiced')
+		self.add_column(_('Total Due'), fieldname='total')
 		self.add_column(_('Paid Amount'), fieldname='paid')
 		self.add_column(_(credit_debit_label), fieldname='credit_note')
 		self.add_column(_('Outstanding Amount'), fieldname='outstanding')
 
-		self.setup_ageing_columns()
-		self.add_column(_('Total'), fieldname='total')
+		self.setup_ageing_columns()	
 
 		if self.party_type == "Customer":
 			self.add_column(label=_('Territory'), fieldname='territory', fieldtype='Link',
