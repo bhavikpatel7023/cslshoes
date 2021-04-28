@@ -120,5 +120,5 @@ app_license = "MIT"
 # 	"frappe.desk.doctype.event.event.get_events": "cslshoes.event.get_events"
 # }
 
-fixtures  = ["Custom Field","Custom Script","Print Format"]
+#fixtures  = ["Custom Field","Custom Script","Print Format"]
 
